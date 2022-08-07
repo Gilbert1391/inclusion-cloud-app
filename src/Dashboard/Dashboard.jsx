@@ -25,7 +25,7 @@ const Dashboard = () => {
     { label: "users", data: null },
     { label: "workflows", data: null },
   ]);
-  const [isLoading, setIsLoading] = useState("idle");
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchResources = async () => {
     setIsLoading(true);
