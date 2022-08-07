@@ -3,6 +3,8 @@ import axios from "axios";
 import Card from "../Card/Card";
 
 const Dashboard = () => {
+  const INTERVAL = 15000;
+
   const [resources, setResources] = useState([
     { label: "accounts", data: null },
     { label: "assets", data: null },
@@ -25,32 +27,33 @@ const Dashboard = () => {
   ]);
   const [isLoading, setIsLoading] = useState("idle");
 
-  useEffect(() => {
-    const fetchResources = async () => {
-      setIsLoading(true);
+  const fetchResources = async () => {
+    setIsLoading(true);
 
-      for (const resource of resources) {
-        let result = null;
-        try {
-          const { data } = await axios.get(
-            `https://api.factoryfour.com/${resource.label}/health/status`
-          );
-          result = {
-            success: true,
-            message: data.hostname,
-            timestamp: data.time,
-          };
-        } catch (error) {
-          console.log(error);
-          result = { success: false, message: error.message };
-        }
-        resource.data = result;
+    for (const resource of resources) {
+      let result = null;
+      try {
+        const { data } = await axios.get(
+          `https://api.factoryfour.com/${resource.label}/health/status`
+        );
+        result = {
+          success: true,
+          message: data.hostname,
+          timestamp: data.time,
+        };
+      } catch (error) {
+        result = { success: false, message: error.message };
       }
-      setResources([...resources]);
-      setIsLoading(false);
-    };
+      resource.data = result;
+    }
 
+    setResources([...resources]);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
     fetchResources();
+    setInterval(async () => await fetchResources(), INTERVAL);
   }, []);
 
   return (
