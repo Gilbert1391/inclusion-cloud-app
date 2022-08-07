@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/inclusion-cloud-app/static/css/main.84487ea8.css",
+    "main.js": "/inclusion-cloud-app/static/js/main.5e531664.js",
+    "static/js/787.9533d75a.chunk.js": "/inclusion-cloud-app/static/js/787.9533d75a.chunk.js",
+    "index.html": "/inclusion-cloud-app/index.html",
+    "main.84487ea8.css.map": "/inclusion-cloud-app/static/css/main.84487ea8.css.map",
+    "main.5e531664.js.map": "/inclusion-cloud-app/static/js/main.5e531664.js.map",
+    "787.9533d75a.chunk.js.map": "/inclusion-cloud-app/static/js/787.9533d75a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84487ea8.css",
+    "static/js/main.5e531664.js"
+  ]
+}
